@@ -33,18 +33,24 @@ h1{font-size:clamp(25px,3vw,34px);line-height:1.15;margin:5px 0 8px;letter-spaci
 .tag{font-size:11px;font-weight:700;padding:5px 8px;border-radius:20px;background:#edf2f4;color:#596a75;white-space:nowrap}.tag.green{background:var(--accent2);color:var(--accent)}
 .drop{border:1.5px dashed #bdcbd1;background:#f8fafb;border-radius:12px;padding:17px;text-align:center}.drop input{max-width:100%;font-size:12px}.drop strong{display:block;font-size:13px;margin-bottom:4px}.drop p{font-size:11px;color:var(--muted);margin:0 0 10px}
 .video-wrap{position:relative;background:#101a21;border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-top:12px;display:grid;place-items:center}
-.video-wrap video,.video-wrap canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.video-wrap canvas{pointer-events:none}.placeholder{color:#aebbc2;font-size:12px;text-align:center;padding:15px}
+.video-wrap video,.video-wrap canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.video-wrap canvas{pointer-events:none}
+.placeholder{color:#aebbc2;font-size:12px;text-align:center;padding:15px}
 .controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:11px}
-.btn{border:1px solid var(--line);background:white;color:var(--ink);padding:8px 12px;border-radius:9px;font-size:12px;font-weight:700}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}.btn.dark{background:var(--navy);border-color:var(--navy);color:white}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn{border:1px solid var(--line);background:white;color:var(--ink);padding:8px 12px;border-radius:9px;font-size:12px;font-weight:700}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:white}.btn.dark{background:var(--navy);border-color:var(--navy);color:white}.btn:disabled{opacity:.45;cursor:not-allowed}
 select,.field input{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:white;color:var(--ink);font-size:12px;max-width:100%}
 .small-label{font-size:11px;color:var(--muted);font-weight:700}
-.note{font-size:12px;color:var(--muted);background:#f5f8f9;border-left:3px solid #9ab9b6;padding:10px 12px;border-radius:5px;margin-top:13px}.warning{background:var(--warn);border-left-color:#d5a24d;color:#70582e}.danger{background:var(--danger);border-left-color:#d47a70;color:#78423d}
-.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.metric{border:1px solid var(--line);border-radius:12px;padding:13px;min-width:0}.metric .name{font-size:11px;color:var(--muted);min-height:32px}.metric .value{font-size:25px;font-weight:760;letter-spacing:-.04em;margin:3px 0}.metric .unit{font-size:11px;color:var(--muted)}.metric .desc{font-size:10px;color:var(--muted);margin-top:5px}
+.note{font-size:12px;color:var(--muted);background:#f5f8f9;border-left:3px solid #9ab9b6;padding:10px 12px;border-radius:5px;margin-top:13px}
+.warning{background:var(--warn);border-left-color:#d5a24d;color:#70582e}.danger{background:var(--danger);border-left-color:#d47a70;color:#78423d}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.metric{border:1px solid var(--line);border-radius:12px;padding:13px;min-width:0}
+.metric .name{font-size:11px;color:var(--muted);min-height:32px}.metric .value{font-size:25px;font-weight:760;letter-spacing:-.04em;margin:3px 0}.metric .unit{font-size:11px;color:var(--muted)}.metric .desc{font-size:10px;color:var(--muted);margin-top:5px}
 .section-title{display:flex;align-items:center;gap:10px;margin:23px 0 12px}.section-title h2{font-size:18px;margin:0}.section-title span{font-size:11px;color:var(--muted)}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:5px;min-width:130px;flex:1}.field label{font-size:11px;color:var(--muted);font-weight:700}.field input{width:100%;font-size:13px}
-.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.table-scroll{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:12px}th,td{text-align:left;padding:10px 9px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
-.empty{color:var(--muted);font-size:12px;text-align:center;padding:24px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:15px 0}.step{background:#f5f8f9;border:1px solid var(--line);border-radius:10px;padding:11px}.step b{font-size:11px;display:block;margin-bottom:4px}.step span{font-size:10px;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.table-scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:12px}th,td{text-align:left;padding:10px 9px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.empty{color:var(--muted);font-size:12px;text-align:center;padding:24px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:15px 0}.step{background:#f5f8f9;border:1px solid var(--line);border-radius:10px;padding:11px}.step b{font-size:11px;display:block;margin-bottom:4px}.step span{font-size:10px;color:var(--muted)}
 .footer{margin-top:24px;color:#7c8991;font-size:11px;text-align:center}.hidden{display:none!important}
 @media(max-width:850px){.grid{grid-template-columns:1fr}.intro{align-items:start;flex-direction:column}.status{white-space:normal}.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){header{padding:16px}.header-note{display:none}main{padding:20px 12px 40px}.card{padding:14px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.tabs{margin:17px 0}.tab{padding:9px 11px;font-size:12px}}
@@ -63,9 +69,9 @@ table{border-collapse:collapse;width:100%;font-size:12px}th,td{text-align:left;p
  <div class="tabs" role="tablist">
   <button class="tab active" data-tab="analysis">01 · Análisis</button>
   <button class="tab" data-tab="results">02 · Indicadores</button>
-  <button class="tab" data-tab="validation">03 · Comprobar resultados (opcional)</button>
-  <button class="tab" data-tab="records">04 · Registros y exportación</button>
+  <button class="tab" data-tab="records">03 · Registros y exportación</button>
  </div>
+
  <section class="panel active" id="analysis">
   <div class="steps">
    <div class="step"><b>1. Prepara el video</b><span>Cámara fija, cuerpo completo y buena iluminación.</span></div>
@@ -89,13 +95,14 @@ table{border-collapse:collapse;width:100%;font-size:12px}th,td{text-align:left;p
     <div class="controls"><button class="btn dark" id="frontCapture" disabled>Registrar este instante</button><span class="small-label" id="frontState">Sin video cargado</span></div>
    </article>
   </div>
-  <div class="note warning">Puedes pausar y reproducir las veces que necesites. Los videos se controlan por separado: pausa ambos en el mismo instante del movimiento si deseas comparar las dos vistas.</div>
+  <div class="note warning">Importante: la velocidad de reproducción solo cambia cómo ves el video. Los cálculos usan los fotogramas originales y el tiempo del video, no el tiempo ralentizado. Puedes reproducir y pausar cada video tantas veces como necesites. Los dos videos se controlan por separado: pausa ambos en el mismo instante de la repetición antes de registrar.</div>
   <div class="card" style="margin-top:18px">
    <div class="card-head"><div><h2>Registro de evaluación</h2><p class="sub">Identifica la sesión antes de guardar los resultados.</p></div></div>
    <div class="row"><div class="field"><label for="participant">Código o nombre del registro</label><input id="participant" placeholder="Ej. Evaluación 01"></div><div class="field"><label for="trial">Condición / repetición</label><input id="trial" placeholder="Ej. Sentadilla libre · repetición 1"></div><div class="field"><label for="notes">Observaciones</label><input id="notes" placeholder="Ej. calzado, carga, molestias..."></div></div>
    <div class="note">El análisis se ejecuta en el navegador. Los videos no se envían a un servidor desde esta página. Los registros permanecen en la sesión hasta que exportes los datos.</div>
   </div>
  </section>
+
  <section class="panel" id="results">
   <div class="card">
    <div class="card-head"><div><h2>Indicadores del instante registrado</h2><p class="sub">Valores disponibles según la última captura de cada plano.</p></div><span class="tag green">Ángulos 2D</span></div>
@@ -118,46 +125,32 @@ table{border-collapse:collapse;width:100%;font-size:12px}th,td{text-align:left;p
    <p class="sub" style="margin-top:10px">Los indicadores son estimaciones geométricas 2D. La alineación frontal no equivale por sí sola a una medición clínica validada de valgo/varo.</p>
   </div>
  </section>
- <section class="panel" id="validation">
-  <div class="grid">
-   <div class="card">
-    <h2>Comprobación de precisión</h2><p class="sub">Sección opcional para contrastar mediciones con una referencia independiente.</p>
-    <div class="note warning">Para una comparación justa, usa el mismo fotograma, plano y definición de puntos en ambos métodos. Esta comprobación no constituye una validación clínica.</div>
-    <div class="section-title"><h2>Valores de referencia</h2></div>
-    <div class="two">
-     <div class="field"><label>Flexión de rodilla (°)</label><input type="number" step=".1" id="refKnee" placeholder="Valor de referencia"></div>
-     <div class="field"><label>Flexión de cadera (°)</label><input type="number" step=".1" id="refHip" placeholder="Valor de referencia"></div>
-     <div class="field"><label>Inclinación de tronco (°)</label><input type="number" step=".1" id="refTrunk" placeholder="Valor de referencia"></div>
-     <div class="field"><label>Tolerancia aceptada (°)</label><input type="number" step=".1" min="0" id="tolerance" value="5"></div>
-    </div>
-    <div class="controls"><button class="btn primary" id="validateBtn">Calcular diferencia</button></div>
-    <p class="sub" style="margin-top:8px">La tolerancia es un criterio operativo editable del proyecto; no es un estándar clínico universal y debe justificarse.</p>
-   </div>
-   <div class="card"><h2>Resultado de la comprobación</h2><p class="sub">Se utiliza la última captura sagital.</p><div id="validationResults" class="empty">Aún no se ha calculado la comprobación.</div></div>
-  </div>
-  <div class="card" style="margin-top:18px"><h2>Interpretación</h2><p class="sub">Diferencia absoluta = |medición del analizador − valor de referencia|. Diferencia porcentual = (diferencia absoluta / |referencia|) × 100. Si la referencia es 0°, el porcentaje no se calcula.</p></div>
- </section>
+
  <section class="panel" id="records">
   <div class="card">
    <div class="card-head"><div><h2>Registros guardados</h2><p class="sub">Cada captura se conserva como un registro independiente.</p></div><div class="row"><button class="btn" id="exportCsv">Exportar CSV</button><button class="btn" id="exportJson">Exportar JSON</button></div></div>
    <div class="table-scroll"><table id="recordsTable"><thead><tr><th>Registro</th><th>Plano</th><th>Tiempo (s)</th><th>Rodilla (°)</th><th>Cadera (°)</th><th>Tronco (°)</th><th>Fecha/hora</th></tr></thead><tbody><tr><td colspan="7" class="empty">Todavía no hay registros.</td></tr></tbody></table></div>
    <div class="controls"><button class="btn" id="printReport">Imprimir / Guardar informe PDF</button><button class="btn" id="clearRecords">Borrar registros de esta sesión</button></div>
-   <div class="note">Para generar un PDF, selecciona “Guardar como PDF” en el diálogo de impresión. Exporta CSV para analizar los datos en una planilla o JSON para conservar la estructura completa.</div>
+   <div class="note">Para generar un PDF, usa “Imprimir / Guardar informe PDF” y selecciona “Guardar como PDF” en el diálogo de impresión. Exporta CSV para analizar los datos en una planilla o JSON para conservar la estructura completa.</div>
   </div>
-  <div class="card" style="margin-top:18px"><h2>Reabrir una evaluación exportada</h2><p class="sub">Carga un archivo JSON exportado por esta herramienta para revisar sus mediciones.</p><div class="row"><input type="file" id="importJson" accept=".json,application/json"><span class="small-label" id="importStatus"></span></div></div>
+  <div class="card" style="margin-top:18px">
+   <h2>Reproducir una evaluación exportada</h2><p class="sub">Carga un archivo JSON exportado por esta herramienta para revisar sus mediciones.</p>
+   <div class="row"><input type="file" id="importJson" accept=".json,application/json"><span class="small-label" id="importStatus"></span></div>
+  </div>
  </section>
- <div class="footer">BIOMECH LAB · Herramienta académica de análisis cinemático 2D · No sustituye una evaluación clínica.</div>
+ <div class="footer">Los datos de comparación con Kinovea corresponden a la validación académica del proyecto y no son necesarios para utilizar esta herramienta. · BIOMECH LAB · Herramienta académica de análisis cinemático 2D · No sustituye una evaluación clínica.</div>
 </main>
 <script>
 const $=id=>document.getElementById(id);
-const state={pose:{sag:null,front:null},ready:{sag:false,front:false},records:[],latest:{sag:null,front:null},busy:{sag:false,front:false},pending:{sag:false,front:false},lastProcessAt:{sag:0,front:0},lastValidation:null,frameLoop:{sag:false,front:false}};
+const state={pose:{sag:null,front:null},ready:{sag:false,front:false},records:[],latest:{sag:null,front:null},busy:{sag:false,front:false},pending:{sag:false,front:false},lastProcessAt:{sag:0,front:0},lastLandmarks:{sag:null,front:null},frameLoop:{sag:false,front:false}};
 const cfg={
- sag:{video:$('sagVideo'),canvas:$('sagCanvas'),file:$('sagFile'),play:$('sagPlay'),speed:$('sagSpeed'),capture:$('sagCapture'),state:$('sagState'),time:$('sagTime'),placeholder:$('sagPlaceholder'),metrics:$('sagMetrics')},
- front:{video:$('frontVideo'),canvas:$('frontCanvas'),file:$('frontFile'),play:$('frontPlay'),speed:$('frontSpeed'),capture:$('frontCapture'),state:$('frontState'),time:$('frontTime'),placeholder:$('frontPlaceholder'),metrics:$('frontMetrics')}
+ sag:{video:$('sagVideo'),canvas:$('sagCanvas'),file:$('sagFile'),play:$('sagPlay'),speed:$('sagSpeed'),capture:$('sagCapture'),state:$('sagState'),time:$('sagTime'),placeholder:$('sagPlaceholder'),metrics:$('sagMetrics'),kind:'sag'},
+ front:{video:$('frontVideo'),canvas:$('frontCanvas'),file:$('frontFile'),play:$('frontPlay'),speed:$('frontSpeed'),capture:$('frontCapture'),state:$('frontState'),time:$('frontTime'),placeholder:$('frontPlaceholder'),metrics:$('frontMetrics'),kind:'front'}
 };
 function setEngine(msg,ready=false){$('engineStatus').textContent=msg;$('engineStatus').classList.toggle('ready',ready)}
 function fmtTime(t){if(!Number.isFinite(t))return'00:00.00';return`${String(Math.floor(t/60)).padStart(2,'0')}:${(t%60).toFixed(2).padStart(5,'0')}`}
-function angle(a,b,c){const v1=[a.x-b.x,a.y-b.y],v2=[c.x-b.x,c.y-b.y],d=v1[0]*v2[0]+v1[1]*v2[1],m=Math.hypot(...v1)*Math.hypot(...v2);if(!m)return null;return Math.acos(Math.max(-1,Math.min(1,d/m)))*180/Math.PI}
+function angle(a,b,c){const v1=[a.x-b.x,a.y-b.y],v2=[c.x-b.x,c.y-b.y];const d=v1[0]*v2[0]+v1[1]*v2[1],m=Math.hypot(...v1)*Math.hypot(...v2);if(!m)return null;return Math.acos(Math.max(-1,Math.min(1,d/m)))*180/Math.PI}
+function norm180(a){return((a%360)+360)%360}
 function segmentVertical(a,b){const dx=b.x-a.x,dy=b.y-a.y;return Math.abs(Math.atan2(dx,-dy)*180/Math.PI)}
 function segmentHorizontal(a,b){return Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI}
 function midpoint(a,b){return{x:(a.x+b.x)/2,y:(a.y+b.y)/2}}
@@ -166,17 +159,21 @@ function calcSag(l){
  const side=(visible(l[24])&&visible(l[26])&&visible(l[28]))?'right':'left';
  const hip=l[side==='right'?24:23],knee=l[side==='right'?26:25],ankle=l[side==='right'?28:27],shoulder=l[side==='right'?12:11];
  if(![hip,knee,ankle,shoulder].every(visible))return null;
- return{kneeFlex:180-angle(hip,knee,ankle),hipFlex:180-angle(shoulder,hip,knee),trunk:segmentVertical(hip,shoulder),side,quality:'Puntos visibles'};
+ const kneeFlex=180-angle(hip,knee,ankle),hipFlex=180-angle(shoulder,hip,knee),trunk=segmentVertical(hip,shoulder);
+ return {kneeFlex,hipFlex,trunk,side,quality:'Puntos visibles'};
 }
 function calcFront(l){
  const lh=l[23],rh=l[24],lk=l[25],rk=l[26],la=l[27],ra=l[28],ls=l[11],rs=l[12];
  if(![lh,rh,lk,rk,la,ra,ls,rs].every(visible))return null;
- const left=180-angle(lh,lk,la),right=180-angle(rh,rk,ra),pelvis=Math.abs(segmentHorizontal(lh,rh)),shoulder=midpoint(ls,rs),hips=midpoint(lh,rh);
- return{leftAlign:left,rightAlign:right,pelvisObliquity:pelvis,trunkLateral:segmentVertical(hips,shoulder),quality:'Puntos visibles'};
+ const left=180-angle(lh,lk,la),right=180-angle(rh,rk,ra);
+ const pelvis=Math.abs(segmentHorizontal(lh,rh));
+ const shoulder=midpoint(ls,rs),hips=midpoint(lh,rh);
+ const trunk=segmentVertical(hips,shoulder);
+ return {leftAlign:left,rightAlign:right,pelvisObliquity:pelvis,trunkLateral:trunk,quality:'Puntos visibles'};
 }
-function draw(ctx,canvas,landmarks){
- ctx.clearRect(0,0,canvas.width,canvas.height);if(!landmarks)return;
- const w=canvas.width,h=canvas.height,chains=[[11,12,24,26,28],[11,23,25,27],[23,24],[11,12],[23,24,25,26]];
+function draw(ctx,canvas,landmarks,kind){
+ const w=canvas.width,h=canvas.height;ctx.clearRect(0,0,w,h);if(!landmarks)return;
+ const chains=[[11,12,24,26,28],[12,24,26,28],[11,23,25,27],[23,24],[11,12],[23,24,25,26]];
  ctx.lineWidth=Math.max(2,w*.004);ctx.strokeStyle='#7ed1c2';ctx.fillStyle='#e9fff9';
  chains.forEach(chain=>{ctx.beginPath();let started=false;chain.forEach(i=>{const p=landmarks[i];if(!visible(p)){started=false;return}const x=p.x*w,y=p.y*h;if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y)});ctx.stroke()});
  landmarks.forEach((p,i)=>{if(i>32||!visible(p))return;ctx.beginPath();ctx.arc(p.x*w,p.y*h,Math.max(2,w*.005),0,Math.PI*2);ctx.fill()});
@@ -188,9 +185,10 @@ async function initPose(){
    const pose=new Pose({locateFile:f=>`https://cdn.jsdelivr.net/npm/@mediapipe/pose/${f}`});
    pose.setOptions({modelComplexity:1,smoothLandmarks:true,enableSegmentation:false,minDetectionConfidence:.55,minTrackingConfidence:.55});
    pose.onResults(res=>{
-    const c=cfg[kind],ctx=c.canvas.getContext('2d');c.canvas.width=c.video.videoWidth||640;c.canvas.height=c.video.videoHeight||360;
-    if(res.poseLandmarks){const m=kind==='sag'?calcSag(res.poseLandmarks):calcFront(res.poseLandmarks);state.latest[kind]=m;draw(ctx,c.canvas,res.poseLandmarks);renderMetrics(kind,m)}
-    else{state.latest[kind]=null;ctx.clearRect(0,0,c.canvas.width,c.canvas.height);if(c.video.src)c.state.textContent='No se detecta el cuerpo completo'}
+    const c=cfg[kind],ctx=c.canvas.getContext('2d');
+    c.canvas.width=c.video.videoWidth||640;c.canvas.height=c.video.videoHeight||360;
+    if(res.poseLandmarks){state.lastLandmarks[kind]=res.poseLandmarks;draw(ctx,c.canvas,res.poseLandmarks,kind);const m=kind==='sag'?calcSag(res.poseLandmarks):calcFront(res.poseLandmarks);state.latest[kind]=m;renderMetrics(kind,m)}
+    else{state.lastLandmarks[kind]=null;state.latest[kind]=null;ctx.clearRect(0,0,c.canvas.width,c.canvas.height);if(c.video.src)c.state.textContent='No se detecta el cuerpo completo'}
     c.time.textContent=fmtTime(c.video.currentTime);
    });
    state.pose[kind]=pose;state.ready[kind]=true;
@@ -199,19 +197,31 @@ async function initPose(){
  }catch(e){setEngine('Error al iniciar MediaPipe');console.error(e)}
 }
 async function processFrame(kind){
- const c=cfg[kind];if(!state.ready[kind]||c.video.readyState<2)return;
+ const c=cfg[kind];
+ if(!state.ready[kind]||c.video.readyState<2)return;
  if(state.busy[kind]){state.pending[kind]=true;return}
  state.busy[kind]=true;
  try{
-  do{state.pending[kind]=false;await state.pose[kind].send({image:c.video})}while(state.pending[kind]);
+  do{
+   state.pending[kind]=false;
+   await state.pose[kind].send({image:c.video});
+  }while(state.pending[kind]);
  }catch(e){c.state.textContent='No se pudo analizar este fotograma. Intenta pausar y volver a reproducir.';console.error(e)}
- finally{state.busy[kind]=false;if(state.pending[kind])processFrame(kind)}
+ finally{
+  state.busy[kind]=false;
+  if(state.pending[kind])processFrame(kind);
+ }
 }
 function startFrameLoop(kind){
- if(state.frameLoop[kind])return;state.frameLoop[kind]=true;const c=cfg[kind];
+ if(state.frameLoop[kind])return;
+ state.frameLoop[kind]=true;
+ const c=cfg[kind];
  const tick=now=>{
   if(!state.frameLoop[kind])return;
-  if(!c.video.paused&&!c.video.ended&&now-state.lastProcessAt[kind]>=33){state.lastProcessAt[kind]=now;processFrame(kind)}
+  if(!c.video.paused&&!c.video.ended&&now-state.lastProcessAt[kind]>=33){
+   state.lastProcessAt[kind]=now;
+   processFrame(kind);
+  }
   requestAnimationFrame(tick);
  };
  requestAnimationFrame(tick);
@@ -225,29 +235,27 @@ function attach(kind){
   const url=URL.createObjectURL(file);c.video.src=url;c.video.dataset.url=url;c.video.classList.remove('hidden');c.placeholder.classList.add('hidden');
   c.video.onloadedmetadata=()=>{
    if(!Number.isFinite(c.video.duration)||c.video.duration<=0){alert('No se pudo leer la duración del video.');return}
-   c.play.disabled=c.speed.disabled=c.capture.disabled=false;$(''+kind+'Step').disabled=false;$(kind+'StepBack').disabled=false;
+   c.play.disabled=c.speed.disabled=c.capture.disabled=false;
+   $(''+kind+'Step').disabled=false;$(kind+'StepBack').disabled=false;
    c.video.pause();c.video.currentTime=0;startFrameLoop(kind);c.state.textContent=`${file.name} · ${c.video.videoWidth}×${c.video.videoHeight}`;
-   c.canvas.width=c.video.videoWidth;c.canvas.height=c.video.videoHeight;processFrame(kind);
+   c.canvas.width=c.video.videoWidth;c.canvas.height=c.video.videoHeight;
+   processFrame(kind);
   };
   c.video.onerror=()=>{c.state.textContent='No se pudo abrir el video. Prueba con MP4 H.264.';alert('No se pudo abrir este video. Prueba exportarlo como MP4 (H.264).')};
  });
- c.play.addEventListener('click',async()=>{
-  if(c.video.paused){try{await c.video.play();c.play.textContent='Pausar';processFrame(kind)}catch(e){c.state.textContent='No se pudo reproducir el video'}}
-  else{c.video.pause();c.play.textContent='Reproducir';processFrame(kind)}
- });
+ c.play.addEventListener('click',async()=>{if(c.video.paused){try{await c.video.play();c.play.textContent='Pausar';processFrame(kind)}catch(e){c.state.textContent='No se pudo reproducir el video'}}else{c.video.pause();c.play.textContent='Reproducir';processFrame(kind)}});
  c.speed.addEventListener('change',()=>c.video.playbackRate=Number(c.speed.value));
- c.video.addEventListener('timeupdate',()=>c.time.textContent=fmtTime(c.video.currentTime));
+ c.video.addEventListener('timeupdate',()=>{c.time.textContent=fmtTime(c.video.currentTime)});
  c.video.addEventListener('pause',()=>{c.play.textContent='Reproducir';processFrame(kind)});
  c.video.addEventListener('play',()=>{c.play.textContent='Pausar';processFrame(kind)});
  c.video.addEventListener('seeked',()=>{state.pending[kind]=true;processFrame(kind)});
  c.video.addEventListener('ended',()=>c.play.textContent='Reproducir');
- $(kind+'Step').addEventListener('click',()=>{c.video.pause();c.video.currentTime=Math.min(c.video.duration,c.video.currentTime+1/30)});
- $(kind+'StepBack').addEventListener('click',()=>{c.video.pause();c.video.currentTime=Math.max(0,c.video.currentTime-1/30)});
+ $(kind+'Step').addEventListener('click',()=>{c.video.pause();c.video.currentTime=Math.min(c.video.duration,c.video.currentTime+1/30);});
+ $(kind+'StepBack').addEventListener('click',()=>{c.video.pause();c.video.currentTime=Math.max(0,c.video.currentTime-1/30);});
  c.capture.addEventListener('click',()=>capture(kind));
 }
 function renderMetrics(kind,m){
- const el=cfg[kind].metrics;
- if(!m){el.innerHTML='<div class="empty">No hay puntos suficientes visibles en este fotograma. Ajusta la cámara o la posición y vuelve a intentar.</div>';return}
+ const el=cfg[kind].metrics;if(!m){el.innerHTML='<div class="empty">No hay puntos suficientes visibles en este fotograma. Ajusta la cámara o la posición y vuelve a intentar.</div>';return}
  const items=kind==='sag'?
  [['Flexión de rodilla',m.kneeFlex,'°','Cadera–rodilla–tobillo'],['Flexión de cadera',m.hipFlex,'°','Hombro–cadera–rodilla'],['Inclinación de tronco',m.trunk,'°','Respecto a vertical']]:
  [['Alineación izquierda',m.leftAlign,'°','Desviación proyectada'],['Alineación derecha',m.rightAlign,'°','Desviación proyectada'],['Oblicuidad pélvica',m.pelvisObliquity,'°','Línea entre caderas'],['Inclinación lateral tronco',m.trunkLateral,'°','Respecto a vertical']];
@@ -265,16 +273,6 @@ function renderRecords(){
 }
 function val(v){return Number.isFinite(v)?v.toFixed(1):'—'}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function validate(){
- const m=state.latest.sag,box=$('validationResults');if(!m){box.innerHTML='<div class="empty">Primero registra un instante sagital con puntos visibles.</div>';return}
- const specs=[['Flexión de rodilla',m.kneeFlex,$('refKnee').value],['Flexión de cadera',m.hipFlex,$('refHip').value],['Inclinación de tronco',m.trunk,$('refTrunk').value]],tol=Number($('tolerance').value);
- if(!Number.isFinite(tol)||tol<0){alert('Ingresa una tolerancia válida.');return}
- const rows=[];
- for(const [name,app,raw] of specs){if(raw==='')continue;const ref=Number(raw);if(!Number.isFinite(ref))continue;const error=Math.abs(app-ref),pct=ref===0?null:error/Math.abs(ref)*100;rows.push({name,app,ref,error,pct,pass:error<=tol})}
- if(!rows.length){box.innerHTML='<div class="empty">Ingresa al menos una medición de referencia.</div>';return}
- box.innerHTML=`<div class="table-scroll"><table><thead><tr><th>Indicador</th><th>Analizador</th><th>Referencia</th><th>Diferencia abs.</th><th>Diferencia %</th><th>Tolerancia</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.name}</td><td>${r.app.toFixed(1)}°</td><td>${r.ref.toFixed(1)}°</td><td>${r.error.toFixed(1)}°</td><td>${r.pct===null?'N/C':r.pct.toFixed(1)+'%'}</td><td>${r.pass?'Dentro':'Fuera'} (${tol}°)</td></tr>`).join('')}</tbody></table></div><p class="sub" style="margin-top:10px">Resultado respecto de la tolerancia operativa ingresada. No demuestra validez clínica.</p>`;
- state.lastValidation={tolerance:tol,rows,createdAt:new Date().toISOString()};
-}
 function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function exportCSV(){
  if(!state.records.length){alert('No hay registros para exportar.');return}
@@ -283,20 +281,12 @@ function exportCSV(){
  const csv=[headers,...rows].map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\n');
  download('biomech_lab_registros.csv','\ufeff'+csv,'text/csv;charset=utf-8');
 }
-function exportJSON(){if(!state.records.length){alert('No hay registros para exportar.');return}download('biomech_lab_evaluacion.json',JSON.stringify({application:'Biomech Lab',version:'1.0',method:'MediaPipe Pose · estimaciones geométricas 2D',records:state.records,validation:state.lastValidation||null},null,2),'application/json')}
-$('validateBtn').addEventListener('click',validate);
+function exportJSON(){if(!state.records.length){alert('No hay registros para exportar.');return}download('biomech_lab_evaluacion.json',JSON.stringify({application:'Biomech Lab',version:'1.1',method:'MediaPipe Pose · estimaciones geométricas 2D',records:state.records},null,2),'application/json')}
 $('exportCsv').addEventListener('click',exportCSV);$('exportJson').addEventListener('click',exportJSON);
 $('printReport').addEventListener('click',()=>window.print());
-$('clearRecords').addEventListener('click',()=>{if(confirm('¿Borrar todos los registros de esta sesión?')){state.records=[];state.lastValidation=null;renderRecords()}});
-$('importJson').addEventListener('change',async e=>{
- const f=e.target.files[0];if(!f)return;
- try{const data=JSON.parse(await f.text());if(!Array.isArray(data.records))throw Error('Formato');state.records=data.records;state.lastValidation=data.validation||null;renderRecords();$('importStatus').textContent=`${data.records.length} registros cargados`}
- catch(err){$('importStatus').textContent='Archivo JSON no válido'}
-});
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
- document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
- document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));
-}));
+$('clearRecords').addEventListener('click',()=>{if(confirm('¿Borrar todos los registros de esta sesión?')){state.records=[];renderRecords()}});
+$('importJson').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data.records))throw Error('Formato');state.records=data.records;renderRecords();$('importStatus').textContent=`${data.records.length} registros cargados`}catch(err){$('importStatus').textContent='Archivo JSON no válido'}});
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab))}));
 attach('sag');attach('front');initPose();
 window.addEventListener('beforeunload',()=>{Object.values(cfg).forEach(c=>{if(c.video.dataset.url)URL.revokeObjectURL(c.video.dataset.url)})});
 </script>
