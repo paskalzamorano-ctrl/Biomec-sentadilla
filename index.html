@@ -1,145 +1,267 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biomech Lab | Análisis de sentadilla</title>
+<title>Biomech Lab | Analizador de sentadilla</title>
 
 <style>
 :root{
-  --bg:#f4f6f8;--surface:#fff;--ink:#18232d;--muted:#687783;--line:#e2e8ed;
-  --accent:#176b68;--accent2:#dcefeb;--navy:#203443;--warn:#fff4df;--danger:#fff0ee;
-  --shadow:0 8px 28px rgba(25,45,58,.06);--radius:15px
+ --bg:#f4f6f8;--surface:#fff;--ink:#18232d;--muted:#687783;
+ --line:#e2e8ed;--accent:#176b68;--accent2:#dcefeb;
+ --navy:#203443;--warn:#fff4df;--shadow:0 8px 28px rgba(25,45,58,.06);
+ --radius:15px
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+body{
+ margin:0;background:var(--bg);color:var(--ink);
+ font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif
+}
 button,input,select{font:inherit}
 button{cursor:pointer}
-header{background:var(--navy);color:white;padding:22px clamp(18px,4vw,54px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+header{
+ background:var(--navy);color:white;padding:20px clamp(16px,4vw,50px);
+ display:flex;align-items:center;justify-content:space-between;gap:15px
+}
 .brand{display:flex;align-items:center;gap:12px}
-.brand-mark{width:38px;height:38px;border:1px solid #78909d;border-radius:11px;display:grid;place-items:center;font-weight:800;color:#a8d6d0}
-.brand small{display:block;color:#b7c6ce;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-.brand strong{font-size:17px;letter-spacing:.01em}
-.header-note{font-size:12px;color:#c4d0d6;text-align:right}
-main{max-width:1440px;margin:auto;padding:28px clamp(14px,3vw,42px) 60px}
-.intro{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
-.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:800}
-h1{font-size:clamp(25px,3vw,34px);line-height:1.15;margin:5px 0 8px;letter-spacing:-.03em}
-.intro p{margin:0;color:var(--muted);max-width:760px}
-.status{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 12px;color:var(--muted);font-size:12px}
-.status:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#c18b38;margin-right:8px}
+.brand-mark{
+ width:38px;height:38px;border:1px solid #78909d;
+ border-radius:11px;display:grid;place-items:center;
+ font-weight:800;color:#a8d6d0
+}
+.brand small{display:block;color:#b7c6ce;font-size:11px;letter-spacing:.14em}
+.brand strong{font-size:17px}
+.header-note{font-size:11px;color:#c4d0d6;text-align:right}
+main{max-width:1250px;margin:auto;padding:25px clamp(12px,3vw,35px) 55px}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}
+.eyebrow{font-size:11px;letter-spacing:.13em;color:var(--accent);font-weight:800}
+h1{font-size:clamp(25px,3vw,34px);margin:5px 0 8px;line-height:1.15}
+.intro p{margin:0;color:var(--muted);max-width:700px}
+.status{font-size:12px;background:white;border:1px solid var(--line);padding:8px 12px;border-radius:25px}
+.status:before{content:"";display:inline-block;width:7px;height:7px;background:#c18b38;border-radius:50%;margin-right:7px}
 .status.ready:before{background:#268b69}
-.tabs{display:flex;gap:6px;overflow:auto;padding:5px;background:#e9eef1;border-radius:12px;margin:24px 0}
-.tab{border:0;background:transparent;color:#586773;padding:10px 15px;border-radius:9px;font-weight:650;white-space:nowrap}
-.tab.active{background:#fff;color:var(--ink);box-shadow:0 2px 7px #1d344014}
-.panel{display:none}.panel.active{display:block}
+.tabs{display:flex;gap:6px;overflow:auto;padding:5px;background:#e9eef1;border-radius:12px;margin:20px 0}
+.tab{border:0;background:transparent;color:#586773;padding:10px 15px;border-radius:9px;font-weight:700;white-space:nowrap}
+.tab.active{background:white;color:var(--ink)}
+.panel{display:none}
+.panel.active{display:block}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:19px;min-width:0}
-.card-head{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:14px}
-.card h2{font-size:17px;margin:0 0 4px;letter-spacing:-.015em}
+.card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);min-width:0}
+.card-head{display:flex;justify-content:space-between;align-items:start;gap:10px;margin-bottom:13px}
+.card h2{font-size:17px;margin:0 0 4px}
 .card h3{font-size:14px;margin:0 0 10px}
 .sub{font-size:12px;color:var(--muted);margin:0}
-.tag{font-size:11px;font-weight:700;padding:5px 8px;border-radius:20px;background:#edf2f4;color:#596a75;white-space:nowrap}
+.tag{font-size:11px;font-weight:700;padding:5px 9px;border-radius:20px;background:#edf2f4;color:#596a75}
 .tag.green{background:var(--accent2);color:var(--accent)}
-.drop{border:1.5px dashed #bdcbd1;background:#f8fafb;border-radius:12px;padding:17px;text-align:center}
-.drop input{max-width:100%;font-size:12px}
+.drop{border:1.5px dashed #bdcbd1;background:#f8fafb;border-radius:12px;padding:15px;text-align:center}
 .drop strong{display:block;font-size:13px;margin-bottom:4px}
-.drop p{font-size:11px;color:var(--muted);margin:0 0 10px}
-.video-wrap{position:relative;background:#101a21;border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-top:12px;display:grid;place-items:center}
-.video-wrap video,.video-wrap canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;max-width:100%}
+.drop p{font-size:11px;color:var(--muted);margin:0 0 9px}
+.drop input{max-width:100%;font-size:12px}
+
+/* REPRODUCTOR VERTICAL 9:16 */
+.video-wrap{
+ position:relative;
+ width:min(100%,340px);
+ aspect-ratio:9/16;
+ margin:14px auto 0;
+ background:#101a21;
+ border-radius:13px;
+ overflow:hidden;
+ display:grid;
+ place-items:center;
+}
+.video-wrap video,.video-wrap canvas{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ object-fit:contain;
+}
 .video-wrap canvas{pointer-events:none}
-.placeholder{color:#aebbc2;font-size:12px;text-align:center;padding:15px}
-.controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:11px}
-.btn{border:1px solid var(--line);background:white;color:var(--ink);padding:8px 12px;border-radius:9px;font-size:12px;font-weight:700}
+.placeholder{
+ color:#aebbc2;font-size:12px;text-align:center;padding:15px;
+ max-width:240px
+}
+.controls{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:11px}
+.btn{
+ border:1px solid var(--line);background:white;color:var(--ink);
+ padding:8px 11px;border-radius:9px;font-size:12px;font-weight:700
+}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:white}
 .btn.dark{background:var(--navy);border-color:var(--navy);color:white}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-select,.field input{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:white;color:var(--ink);font-size:12px;max-width:100%}
+select,.field input{
+ border:1px solid var(--line);border-radius:9px;
+ padding:8px 10px;background:white;color:var(--ink);font-size:12px
+}
 .small-label{font-size:11px;color:var(--muted);font-weight:700}
 .note{font-size:12px;color:var(--muted);background:#f5f8f9;border-left:3px solid #9ab9b6;padding:10px 12px;border-radius:5px;margin-top:13px}
 .warning{background:var(--warn);border-left-color:#d5a24d;color:#70582e}
-.danger{background:var(--danger);border-left-color:#d47a70;color:#78423d}
 .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.metric{border:1px solid var(--line);border-radius:12px;padding:13px;min-width:0}
-.metric .name{font-size:11px;color:var(--muted);min-height:32px}
-.metric .value{font-size:25px;font-weight:760;letter-spacing:-.04em;margin:3px 0}
+.metric{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+.metric .name{font-size:11px;color:var(--muted);min-height:30px}
+.metric .value{font-size:24px;font-weight:760;margin:3px 0}
 .metric .unit{font-size:11px;color:var(--muted)}
-.metric .desc{font-size:10px;color:var(--muted);margin-top:5px}
-.section-title{display:flex;align-items:center;gap:10px;margin:23px 0 12px}
+.metric .desc{font-size:10px;color:var(--muted);margin-top:4px}
+.section-title{display:flex;align-items:center;gap:10px;margin:22px 0 12px}
 .section-title h2{font-size:18px;margin:0}
 .section-title span{font-size:11px;color:var(--muted)}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.field{display:flex;flex-direction:column;gap:5px;min-width:130px;flex:1}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
 .field label{font-size:11px;color:var(--muted);font-weight:700}
 .field input{width:100%;font-size:13px}
-.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .table-scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:12px}
 th,td{text-align:left;padding:10px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
-th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+th{color:var(--muted);font-size:10px;text-transform:uppercase}
 .empty{color:var(--muted);font-size:12px;text-align:center;padding:24px}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:15px 0}
 .step{background:#f5f8f9;border:1px solid var(--line);border-radius:10px;padding:11px}
 .step b{font-size:11px;display:block;margin-bottom:4px}
 .step span{font-size:10px;color:var(--muted)}
 .footer{margin-top:24px;color:#7c8991;font-size:11px;text-align:center}
-.hidden{display:none!important}
-@media(max-width:850px){.grid{grid-template-columns:1fr}.intro{align-items:start;flex-direction:column}.status{white-space:normal}.steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){header{padding:16px}.header-note{display:none}main{padding:20px 12px 40px}.card{padding:14px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.tabs{margin:17px 0}.tab{padding:9px 11px;font-size:12px}}
+@media(max-width:850px){
+ .grid{grid-template-columns:1fr}
+ .intro{align-items:start;flex-direction:column}
+ .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ header{padding:15px}
+ .header-note{display:none}
+ main{padding:18px 11px 40px}
+ .card{padding:13px}
+ .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .two{grid-template-columns:1fr}
+ .video-wrap{width:min(100%,300px)}
+ .tab{padding:9px 11px;font-size:12px}
+}
+@media print{
+ header,.tabs,.drop,.controls,.footer,.status{display:none!important}
+ body{background:white}
+ main{max-width:none;padding:0}
+ .panel{display:none!important}
+ #records{display:block!important}
+ .card{box-shadow:none}
+}
 </style>
 </head>
-<body>
 
+<body>
 <header>
- <div class="brand"><div class="brand-mark">B</div><div><small>Movement analysis</small><strong>BIOMECH LAB</strong></div></div>
+ <div class="brand">
+  <div class="brand-mark">B</div>
+  <div><small>Movement analysis</small><strong>BIOMECH LAB</strong></div>
+ </div>
  <div class="header-note">ANÁLISIS CINEMÁTICO 2D<br>Herramienta académica · Sentadilla</div>
 </header>
 
 <main>
  <div class="intro">
-  <div><div class="eyebrow">Laboratorio de movimiento</div><h1>Analizador de sentadilla</h1><p>Observa el movimiento y registra sus principales ángulos en las vistas lateral y frontal.</p></div>
-  <div class="status" id="engineStatus">Esperando inicialización de MediaPipe</div>
+  <div>
+   <div class="eyebrow">Laboratorio de movimiento</div>
+   <h1>Analizador de sentadilla</h1>
+   <p>Observa el movimiento y registra sus principales ángulos en las vistas lateral y frontal.</p>
+  </div>
+  <div class="status" id="engineStatus">Preparando detector</div>
  </div>
 
- <div class="tabs" role="tablist">
+ <div class="tabs">
   <button class="tab active" data-tab="analysis">01 · Análisis</button>
   <button class="tab" data-tab="results">02 · Indicadores</button>
-  <button class="tab" data-tab="records">03 · Registros y exportación</button>
+  <button class="tab" data-tab="records">03 · Registros</button>
  </div>
 
  <section class="panel active" id="analysis">
   <div class="steps">
-   <div class="step"><b>1. Prepara el video</b><span>Cámara fija, cuerpo completo y buena iluminación.</span></div>
-   <div class="step"><b>2. Carga las vistas</b><span>Un video lateral y otro frontal del mismo movimiento.</span></div>
-   <div class="step"><b>3. Revisa en cámara lenta</b><span>Pausa en el instante que quieras analizar.</span></div>
-   <div class="step"><b>4. Registra el instante</b><span>Guarda los indicadores de ambas vistas.</span></div>
+   <div class="step"><b>1. Prepara el video</b><span>Graba en vertical, con el cuerpo completo visible.</span></div>
+   <div class="step"><b>2. Carga las vistas</b><span>Un video lateral y otro frontal.</span></div>
+   <div class="step"><b>3. Revisa el movimiento</b><span>Pausa en el instante que quieras analizar.</span></div>
+   <div class="step"><b>4. Registra</b><span>Guarda las mediciones de cada vista.</span></div>
   </div>
 
   <div class="grid">
    <article class="card">
-    <div class="card-head"><div><h2>Vista sagital</h2><p class="sub">Cámara lateral · perfil del movimiento</p></div><span class="tag">LATERAL</span></div>
-    <div class="drop"><strong>Importar video sagital</strong><p>MP4, MOV o WebM · idealmente cuerpo completo y cámara perpendicular</p><input type="file" id="sagFile" accept="video/*"></div>
-    <div class="video-wrap" id="sagWrap"><div class="placeholder" id="sagPlaceholder">El video aparecerá aquí</div><video id="sagVideo" playsinline preload="metadata" class="hidden"></video><canvas id="sagCanvas"></canvas></div>
-    <div class="controls"><button class="btn primary" id="sagPlay" disabled>Reproducir</button><button class="btn" id="sagStepBack" disabled>− 1 cuadro</button><button class="btn" id="sagStep" disabled>+ 1 cuadro</button><label class="small-label">Velocidad</label><select id="sagSpeed" disabled><option value="1">1×</option><option value=".75">0,75×</option><option value=".5" selected>0,5×</option><option value=".25">0,25×</option></select><span class="small-label" id="sagTime">00:00.00</span></div>
-    <div class="controls"><button class="btn dark" id="sagCapture" disabled>Registrar este instante</button><span class="small-label" id="sagState">Sin video cargado</span></div>
+    <div class="card-head">
+     <div><h2>Vista sagital</h2><p class="sub">Cámara lateral · perfil del movimiento</p></div>
+     <span class="tag">LATERAL</span>
+    </div>
+    <div class="drop">
+     <strong>Importar video sagital</strong>
+     <p>MP4, MOV o WebM · preferentemente vertical 9:16</p>
+     <input type="file" id="sagFile" accept="video/*">
+    </div>
+    <div class="video-wrap">
+     <div class="placeholder" id="sagPlaceholder">El video aparecerá aquí</div>
+     <video id="sagVideo" playsinline preload="metadata" class="hidden"></video>
+     <canvas id="sagCanvas"></canvas>
+    </div>
+    <div class="controls">
+     <button class="btn primary" id="sagPlay" disabled>Reproducir</button>
+     <button class="btn" id="sagStepBack" disabled>− 1 cuadro</button>
+     <button class="btn" id="sagStep" disabled>+ 1 cuadro</button>
+     <label class="small-label">Velocidad</label>
+     <select id="sagSpeed" disabled>
+      <option value="1">1×</option><option value=".75">0,75×</option>
+      <option value=".5" selected>0,5×</option><option value=".25">0,25×</option>
+     </select>
+     <span class="small-label" id="sagTime">00:00.00</span>
+    </div>
+    <div class="controls">
+     <button class="btn dark" id="sagCapture" disabled>Registrar este instante</button>
+     <span class="small-label" id="sagState">Sin video cargado</span>
+    </div>
    </article>
 
    <article class="card">
-    <div class="card-head"><div><h2>Vista frontal</h2><p class="sub">Cámara anterior · simetría proyectada</p></div><span class="tag">FRONTAL</span></div>
-    <div class="drop"><strong>Importar video frontal</strong><p>MP4, MOV o WebM · cámara centrada frente a la persona</p><input type="file" id="frontFile" accept="video/*"></div>
-    <div class="video-wrap" id="frontWrap"><div class="placeholder" id="frontPlaceholder">El video aparecerá aquí</div><video id="frontVideo" playsinline preload="metadata" class="hidden"></video><canvas id="frontCanvas"></canvas></div>
-    <div class="controls"><button class="btn primary" id="frontPlay" disabled>Reproducir</button><button class="btn" id="frontStepBack" disabled>− 1 cuadro</button><button class="btn" id="frontStep" disabled>+ 1 cuadro</button><label class="small-label">Velocidad</label><select id="frontSpeed" disabled><option value="1">1×</option><option value=".75">0,75×</option><option value=".5" selected>0,5×</option><option value=".25">0,25×</option></select><span class="small-label" id="frontTime">00:00.00</span></div>
-    <div class="controls"><button class="btn dark" id="frontCapture" disabled>Registrar este instante</button><span class="small-label" id="frontState">Sin video cargado</span></div>
+    <div class="card-head">
+     <div><h2>Vista frontal</h2><p class="sub">Cámara anterior · alineación corporal</p></div>
+     <span class="tag">FRONTAL</span>
+    </div>
+    <div class="drop">
+     <strong>Importar video frontal</strong>
+     <p>MP4, MOV o WebM · preferentemente vertical 9:16</p>
+     <input type="file" id="frontFile" accept="video/*">
+    </div>
+    <div class="video-wrap">
+     <div class="placeholder" id="frontPlaceholder">El video aparecerá aquí</div>
+     <video id="frontVideo" playsinline preload="metadata" class="hidden"></video>
+     <canvas id="frontCanvas"></canvas>
+    </div>
+    <div class="controls">
+     <button class="btn primary" id="frontPlay" disabled>Reproducir</button>
+     <button class="btn" id="frontStepBack" disabled>− 1 cuadro</button>
+     <button class="btn" id="frontStep" disabled>+ 1 cuadro</button>
+     <label class="small-label">Velocidad</label>
+     <select id="frontSpeed" disabled>
+      <option value="1">1×</option><option value=".75">0,75×</option>
+      <option value=".5" selected>0,5×</option><option value=".25">0,25×</option>
+     </select>
+     <span class="small-label" id="frontTime">00:00.00</span>
+    </div>
+    <div class="controls">
+     <button class="btn dark" id="frontCapture" disabled>Registrar este instante</button>
+     <span class="small-label" id="frontState">Sin video cargado</span>
+    </div>
    </article>
   </div>
 
   <div class="card" style="margin-top:18px">
    <h2>Datos de la evaluación</h2>
    <div class="two">
-    <div class="field"><label for="participant">Nombre o código del participante</label><input id="participant" placeholder="Ej. Participante 01"></div>
-    <div class="field"><label for="trial">Intento</label><input id="trial" placeholder="Ej. Sentadilla 1"></div>
+    <div class="field">
+     <label for="participant">Nombre o código del participante</label>
+     <input id="participant" placeholder="Ej. Participante 01">
+    </div>
+    <div class="field">
+     <label for="trial">Intento</label>
+     <input id="trial" placeholder="Ej. Sentadilla 1">
+    </div>
    </div>
-   <div class="field" style="margin-top:12px"><label for="notes">Observaciones</label><input id="notes" placeholder="Observaciones opcionales"></div>
+   <div class="field" style="margin-top:12px">
+    <label for="notes">Observaciones</label>
+    <input id="notes" placeholder="Observaciones opcionales">
+   </div>
    <div class="note">Puedes registrar cada plano por separado. Para comparar ambos, utiliza videos de la misma repetición y selecciona instantes equivalentes.</div>
   </div>
  </section>
@@ -150,45 +272,75 @@ th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.06
    <div class="metrics" id="sagMetrics"><div class="empty">Registra un instante sagital para ver los indicadores.</div></div>
    <div class="section-title"><h2>Plano frontal</h2><span>Vista anterior</span></div>
    <div class="metrics" id="frontMetrics"><div class="empty">Registra un instante frontal para ver los indicadores.</div></div>
-   <div class="note warning">Importante: el ángulo interno es el que se forma entre los tres puntos. El ángulo complementario se calcula como 180° menos el interno. Se muestran ambos para que puedas comparar con Kinovea. Las mediciones dependen de la visibilidad de los puntos, la posición de la cámara y la perspectiva. No representan directamente ángulos articulares 3D ni deben interpretarse como diagnóstico. MediaPipe estima puntos corporales; no detecta directamente EIAS, acromion, trocánter, patela ni maléolos anatómicos.</div>
+   <div class="note warning">
+    El ángulo interno se forma entre tres puntos. El complementario se calcula como 180° menos el interno. MediaPipe estima puntos generales del cuerpo, no identifica directamente EIAS, acromion, trocánter, patela ni maléolos anatómicos. Por eso sus valores pueden diferir de Kinovea. Son estimaciones geométricas 2D, no un diagnóstico ni una medición clínica 3D.
+   </div>
   </div>
 
   <div class="card" style="margin-top:18px">
-   <h2>Cómo se calculan (explicado paso a paso)</h2>
-   <p class="sub">En una medición de tres puntos, el punto del medio es el vértice. Por ejemplo: cadera–rodilla–tobillo significa que la rodilla queda al centro.</p>
-   <div class="note"><b>Ángulo interno:</b> el ángulo que queda entre los dos segmentos. <b>Ángulo complementario:</b> 180° menos el ángulo interno. Ejemplo: si el interno es 174°, el complementario es 6°. No son dos mediciones distintas: son dos formas de expresar la misma geometría.</div>
-   <div class="table-scroll"><table><thead><tr><th>Medición</th><th>Puntos que estima la aplicación</th><th>Qué muestra</th></tr></thead><tbody>
-    <tr><td>Rodilla, vista lateral</td><td>Cadera–rodilla–tobillo</td><td>Ángulo interno y complementario (180° − interno).</td></tr>
-    <tr><td>Cadera, vista lateral</td><td>Hombro–cadera–rodilla</td><td>Ángulo interno y complementario (180° − interno).</td></tr>
-    <tr><td>Tronco, vista lateral</td><td>Hombro–cadera</td><td>Inclinación del segmento respecto a la vertical.</td></tr>
-    <tr><td>Alineación de cada pierna, vista frontal</td><td>Cadera–rodilla–tobillo</td><td>Ángulo interno y desviación respecto a 180°.</td></tr>
-    <tr><td>Inclinación de pelvis</td><td>Cadera izquierda–derecha</td><td>Inclinación de la línea entre ambas caderas respecto a la horizontal.</td></tr>
-    <tr><td>Inclinación lateral del tronco</td><td>Centro de hombros–centro de caderas</td><td>Orientación del segmento respecto a la vertical.</td></tr>
-   </tbody></table></div>
-   <div class="note warning"><b>Ojo con la comparación con Kinovea:</b> Kinovea permite marcar referencias anatómicas concretas (por ejemplo, maléolo medial, patela y EIAS). Esta aplicación estima puntos generales del cuerpo con MediaPipe (tobillo, rodilla y cadera). Por eso los puntos no son idénticos y los valores pueden diferir aunque se use una fórmula parecida. No presentar la comparación como validación directa de los mismos puntos.</div>
-   <p class="sub" style="margin-top:10px">Son estimaciones geométricas en 2D; dependen de la cámara, la postura y la visibilidad del cuerpo. No son un diagnóstico ni equivalen a una medición clínica validada de valgo/varo.</p>
+   <h2>Cómo se calculan las mediciones</h2>
+   <p class="sub">En una medición de tres puntos, el punto del medio es el vértice.</p>
+   <div class="note">
+    <b>Ángulo interno:</b> ángulo formado entre los dos segmentos.<br>
+    <b>Ángulo complementario:</b> 180° menos el ángulo interno.<br>
+    Ejemplo: si el interno es 174°, el complementario es 6°.
+   </div>
+   <div class="table-scroll">
+    <table>
+     <thead><tr><th>Medición</th><th>Puntos estimados</th><th>Resultado</th></tr></thead>
+     <tbody>
+      <tr><td>Rodilla sagital</td><td>Cadera–rodilla–tobillo</td><td>Interno y complementario</td></tr>
+      <tr><td>Cadera sagital</td><td>Hombro–cadera–rodilla</td><td>Interno y complementario</td></tr>
+      <tr><td>Tronco sagital</td><td>Hombro–cadera</td><td>Inclinación respecto a vertical</td></tr>
+      <tr><td>Pierna izquierda frontal</td><td>Cadera–rodilla–tobillo</td><td>Interno y desviación geométrica</td></tr>
+      <tr><td>Pierna derecha frontal</td><td>Cadera–rodilla–tobillo</td><td>Interno y desviación geométrica</td></tr>
+      <tr><td>Pelvis frontal</td><td>Cadera izquierda–derecha</td><td>Inclinación respecto a horizontal</td></tr>
+      <tr><td>Tronco frontal</td><td>Centro hombros–centro caderas</td><td>Inclinación respecto a vertical</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <div class="note warning">La comparación con Kinovea no utiliza exactamente los mismos puntos anatómicos. No se debe interpretar el complementario como flexión articular clínica ni como valgo/varo por sí solo.</div>
   </div>
  </section>
 
  <section class="panel" id="records">
   <div class="card">
-   <div class="card-head"><div><h2>Registros guardados</h2><p class="sub">Cada captura se conserva como un registro independiente.</p></div><div class="row"><button class="btn" id="exportCsv">Exportar CSV</button><button class="btn" id="exportJson">Exportar JSON</button></div></div>
-   <div class="table-scroll"><table id="recordsTable"><thead><tr><th>Registro</th><th>Plano</th><th>Tiempo (s)</th><th>Rodilla (°)</th><th>Cadera (°)</th><th>Tronco (°)</th><th>Fecha/hora</th></tr></thead><tbody><tr><td colspan="7" class="empty">Todavía no hay registros.</td></tr></tbody></table></div>
-   <div class="controls"><button class="btn" id="printReport">Imprimir / Guardar informe PDF</button><button class="btn" id="clearRecords">Borrar registros de esta sesión</button></div>
-   <div class="note">Para generar un PDF, usa “Imprimir / Guardar informe PDF” y selecciona “Guardar como PDF” en el diálogo de impresión. Exporta CSV para analizar los datos en una planilla o JSON para conservar la estructura completa.</div>
+   <div class="card-head">
+    <div><h2>Registros guardados</h2><p class="sub">Capturas realizadas durante esta sesión.</p></div>
+    <div class="controls">
+     <button class="btn" id="exportCsv">Exportar CSV</button>
+     <button class="btn" id="exportJson">Exportar JSON</button>
+    </div>
+   </div>
+   <div class="table-scroll">
+    <table id="recordsTable">
+     <thead><tr><th>Participante</th><th>Plano</th><th>Tiempo</th><th>Rodilla</th><th>Cadera</th><th>Tronco</th><th>Fecha</th></tr></thead>
+     <tbody><tr><td colspan="7" class="empty">Todavía no hay registros.</td></tr></tbody>
+    </table>
+   </div>
+   <div class="controls">
+    <button class="btn" id="printReport">Imprimir / Guardar PDF</button>
+    <button class="btn" id="clearRecords">Borrar registros</button>
+   </div>
+   <div class="note">Para crear un PDF, selecciona “Guardar como PDF” en el diálogo de impresión.</div>
   </div>
 
   <div class="card" style="margin-top:18px">
-   <h2>Reproducir una evaluación exportada</h2><p class="sub">Carga un archivo JSON exportado por esta herramienta para revisar sus mediciones.</p>
-   <div class="row"><input type="file" id="importJson" accept=".json,application/json"><span class="small-label" id="importStatus"></span></div>
+   <h2>Importar evaluación</h2>
+   <p class="sub">Carga un archivo JSON exportado por esta herramienta.</p>
+   <div class="controls">
+    <input type="file" id="importJson" accept=".json,application/json">
+    <span class="small-label" id="importStatus"></span>
+   </div>
   </div>
  </section>
 
- <div class="footer">Los datos de comparación con Kinovea corresponden a la validación académica del proyecto y no son necesarios para utilizar esta herramienta. · BIOMECH LAB · Herramienta académica de análisis cinemático 2D · No sustituye una evaluación clínica.</div>
+ <div class="footer">BIOMECH LAB · Herramienta académica de análisis cinemático 2D · No sustituye una evaluación clínica.</div>
 </main>
 
 <script>
 const $=id=>document.getElementById(id);
+
 const state={
  pose:{sag:null,front:null},
  ready:{sag:false,front:false},
@@ -196,31 +348,43 @@ const state={
  latest:{sag:null,front:null},
  busy:{sag:false,front:false},
  pending:{sag:false,front:false},
- lastProcessAt:{sag:0,front:0},
- lastLandmarks:{sag:null,front:null},
- frameLoop:{sag:false,front:false}
+ frameLoop:{sag:false,front:false},
+ lastProcessAt:{sag:0,front:0}
 };
 
 const cfg={
- sag:{video:$('sagVideo'),canvas:$('sagCanvas'),file:$('sagFile'),play:$('sagPlay'),speed:$('sagSpeed'),capture:$('sagCapture'),state:$('sagState'),time:$('sagTime'),placeholder:$('sagPlaceholder'),metrics:$('sagMetrics'),kind:'sag'},
- front:{video:$('frontVideo'),canvas:$('frontCanvas'),file:$('frontFile'),play:$('frontPlay'),speed:$('frontSpeed'),capture:$('frontCapture'),state:$('frontState'),time:$('frontTime'),placeholder:$('frontPlaceholder'),metrics:$('frontMetrics'),kind:'front'}
+ sag:{
+  video:$('sagVideo'),canvas:$('sagCanvas'),file:$('sagFile'),
+  play:$('sagPlay'),speed:$('sagSpeed'),capture:$('sagCapture'),
+  status:$('sagState'),time:$('sagTime'),placeholder:$('sagPlaceholder'),
+  metrics:$('sagMetrics')
+ },
+ front:{
+  video:$('frontVideo'),canvas:$('frontCanvas'),file:$('frontFile'),
+  play:$('frontPlay'),speed:$('frontSpeed'),capture:$('frontCapture'),
+  status:$('frontState'),time:$('frontTime'),placeholder:$('frontPlaceholder'),
+  metrics:$('frontMetrics')
+ }
 };
 
-function setEngine(msg,ready=false){
- $('engineStatus').textContent=msg;
+function setEngine(message,ready=false){
+ $('engineStatus').textContent=message;
  $('engineStatus').classList.toggle('ready',ready);
 }
 
 function fmtTime(t){
  if(!Number.isFinite(t))return'00:00.00';
- return`${String(Math.floor(t/60)).padStart(2,'0')}:${(t%60).toFixed(2).padStart(5,'0')}`;
+ return String(Math.floor(t/60)).padStart(2,'0')+':'+
+ (t%60).toFixed(2).padStart(5,'0');
 }
 
 function angle(a,b,c){
- const v1=[a.x-b.x,a.y-b.y],v2=[c.x-b.x,c.y-b.y];
- const d=v1[0]*v2[0]+v1[1]*v2[1],m=Math.hypot(...v1)*Math.hypot(...v2);
- if(!m)return null;
- return Math.acos(Math.max(-1,Math.min(1,d/m)))*180/Math.PI;
+ const v1=[a.x-b.x,a.y-b.y];
+ const v2=[c.x-b.x,c.y-b.y];
+ const dot=v1[0]*v2[0]+v1[1]*v2[1];
+ const mag=Math.hypot(...v1)*Math.hypot(...v2);
+ if(!mag)return null;
+ return Math.acos(Math.max(-1,Math.min(1,dot/mag)))*180/Math.PI;
 }
 
 function segmentVertical(a,b){
@@ -237,11 +401,12 @@ function midpoint(a,b){
 }
 
 function visible(p){
- return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&(p.visibility===undefined||p.visibility>.5);
+ return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&
+ (p.visibility===undefined||p.visibility>.5);
 }
 
 function calcSag(l){
- const side=(visible(l[24])&&visible(l[26])&&visible(l[28]))?'right':'left';
+ const side=visible(l[24])&&visible(l[26])&&visible(l[28])?'right':'left';
  const hip=l[side==='right'?24:23];
  const knee=l[side==='right'?26:25];
  const ankle=l[side==='right'?28:27];
@@ -254,19 +419,19 @@ function calcSag(l){
 
  if(!Number.isFinite(kneeInternal)||!Number.isFinite(hipInternal))return null;
 
- return {
+ return{
   kneeInternal,
   kneeComplement:180-kneeInternal,
   hipInternal,
   hipComplement:180-hipInternal,
   trunk:segmentVertical(hip,shoulder),
-  side,
-  quality:'Puntos visibles'
+  side
  };
 }
 
 function calcFront(l){
- const lh=l[23],rh=l[24],lk=l[25],rk=l[26],la=l[27],ra=l[28],ls=l[11],rs=l[12];
+ const lh=l[23],rh=l[24],lk=l[25],rk=l[26];
+ const la=l[27],ra=l[28],ls=l[11],rs=l[12];
 
  if(![lh,rh,lk,rk,la,ra,ls,rs].every(visible))return null;
 
@@ -276,28 +441,33 @@ function calcFront(l){
  if(!Number.isFinite(leftInternal)||!Number.isFinite(rightInternal))return null;
 
  const pelvis=Math.abs(segmentHorizontal(lh,rh));
- const shoulder=midpoint(ls,rs),hips=midpoint(lh,rh);
- const trunk=segmentVertical(hips,shoulder);
+ const shoulders=midpoint(ls,rs);
+ const hips=midpoint(lh,rh);
 
- return {
+ return{
   leftInternal,
   leftDeviation:180-leftInternal,
   rightInternal,
   rightDeviation:180-rightInternal,
   pelvisObliquity:pelvis,
-  trunkLateral:trunk,
-  quality:'Puntos visibles'
+  trunkLateral:segmentVertical(hips,shoulders)
  };
 }
 
 function draw(ctx,canvas,landmarks){
- const w=canvas.width,h=canvas.height;
- ctx.clearRect(0,0,w,h);
+ ctx.clearRect(0,0,canvas.width,canvas.height);
  if(!landmarks)return;
 
- const chains=[[11,12,24,26,28],[12,24,26,28],[11,23,25,27],[23,24],[11,12],[23,24,25,26]];
+ const chains=[
+  [11,12,24,26,28],
+  [11,23,25,27],
+  [23,24],
+  [11,12],
+  [12,24,26,28],
+  [11,23,25,27]
+ ];
 
- ctx.lineWidth=Math.max(2,w*.004);
+ ctx.lineWidth=Math.max(2,canvas.width*.004);
  ctx.strokeStyle='#7ed1c2';
  ctx.fillStyle='#e9fff9';
 
@@ -308,7 +478,9 @@ function draw(ctx,canvas,landmarks){
   chain.forEach(i=>{
    const p=landmarks[i];
    if(!visible(p)){started=false;return}
-   const x=p.x*w,y=p.y*h;
+
+   const x=p.x*canvas.width;
+   const y=p.y*canvas.height;
 
    if(!started){ctx.moveTo(x,y);started=true}
    else ctx.lineTo(x,y);
@@ -320,7 +492,7 @@ function draw(ctx,canvas,landmarks){
  landmarks.forEach((p,i)=>{
   if(i>32||!visible(p))return;
   ctx.beginPath();
-  ctx.arc(p.x*w,p.y*h,Math.max(2,w*.005),0,Math.PI*2);
+  ctx.arc(p.x*canvas.width,p.y*canvas.height,Math.max(2,canvas.width*.005),0,Math.PI*2);
   ctx.fill();
  });
 }
@@ -331,8 +503,8 @@ function loadScript(src){
   script.src=src;
   script.crossOrigin='anonymous';
   script.async=true;
-  script.onload=()=>window.Pose?resolve():reject(new Error('La biblioteca se descargó, pero no inició.'));
-  script.onerror=()=>reject(new Error('No se pudo descargar desde '+src));
+  script.onload=()=>window.Pose?resolve():reject(new Error('No se pudo iniciar MediaPipe'));
+  script.onerror=()=>reject(new Error('No se pudo descargar MediaPipe'));
   document.head.appendChild(script);
  });
 }
@@ -341,35 +513,38 @@ async function loadPoseLibrary(){
  if(window.Pose)return;
 
  const sources=[
-  {script:'https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js',base:'https://cdn.jsdelivr.net/npm/@mediapipe/pose/'},
-  {script:'https://unpkg.com/@mediapipe/pose/pose.js',base:'https://unpkg.com/@mediapipe/pose/'}
+  {
+   script:'https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js',
+   base:'https://cdn.jsdelivr.net/npm/@mediapipe/pose/'
+  },
+  {
+   script:'https://unpkg.com/@mediapipe/pose/pose.js',
+   base:'https://unpkg.com/@mediapipe/pose/'
+  }
  ];
 
- let lastError;
+ let error;
 
  for(const source of sources){
   try{
    await loadScript(source.script);
    window.poseAssetBase=source.base;
    return;
-  }catch(e){lastError=e}
+  }catch(e){error=e}
  }
 
- throw lastError||new Error('No se pudo cargar MediaPipe');
+ throw error||new Error('No se pudo cargar el detector');
 }
 
 async function initPose(){
- setEngine('Preparando análisis automático…');
+ setEngine('Preparando detector…');
 
  try{
-  if(!('HTMLVideoElement' in window)||!('WebGLRenderingContext' in window))
-   throw new Error('Este navegador no dispone de las funciones gráficas necesarias. Prueba con Chrome, Edge o Safari actualizado.');
-
   await loadPoseLibrary();
 
   for(const kind of ['sag','front']){
    const pose=new Pose({
-    locateFile:f=>(window.poseAssetBase||'https://cdn.jsdelivr.net/npm/@mediapipe/pose/')+f
+    locateFile:file=>(window.poseAssetBase||'https://cdn.jsdelivr.net/npm/@mediapipe/pose/')+file
    });
 
    pose.setOptions({
@@ -385,21 +560,25 @@ async function initPose(){
     const ctx=c.canvas.getContext('2d');
 
     if(results.poseLandmarks){
-     state.lastLandmarks[kind]=results.poseLandmarks;
      draw(ctx,c.canvas,results.poseLandmarks);
 
-     const m=kind==='sag'?calcSag(results.poseLandmarks):calcFront(results.poseLandmarks);
+     const measurements=kind==='sag'
+      ?calcSag(results.poseLandmarks)
+      :calcFront(results.poseLandmarks);
 
-     state.latest[kind]=m;
-     renderMetrics(kind,m);
-     c.capture.disabled=!m;
-     c.state.textContent=m?'Cuerpo detectado · puntos visibles':'No se detectan todos los puntos corporales necesarios';
+     state.latest[kind]=measurements;
+     renderMetrics(kind,measurements);
+
+     c.capture.disabled=!measurements;
+     c.status.textContent=measurements
+      ?'Cuerpo detectado · puntos visibles'
+      :'No se detectan todos los puntos necesarios';
+
     }else{
-     state.lastLandmarks[kind]=null;
      state.latest[kind]=null;
      ctx.clearRect(0,0,c.canvas.width,c.canvas.height);
-
-     if(c.video.src)c.state.textContent='No se detecta el cuerpo completo: aléjate un poco y mejora la iluminación.';
+     c.capture.disabled=true;
+     if(c.video.src)c.status.textContent='No se detecta el cuerpo completo';
     }
 
     c.time.textContent=fmtTime(c.video.currentTime);
@@ -409,28 +588,33 @@ async function initPose(){
    state.ready[kind]=true;
   }
 
-  setEngine('Análisis listo · carga un video',true);
+  setEngine('Detector listo · carga tus videos',true);
 
- }catch(e){
-  console.error('Error al iniciar MediaPipe:',e);
-  setEngine('No se pudo iniciar el análisis automático');
+ }catch(error){
+  console.error(error);
+  setEngine('Detector no disponible');
 
-  for(const kind of ['sag','front'])
-   cfg[kind].state.textContent='Error: '+(e.message||'revisa conexión o navegador');
+  for(const kind of ['sag','front']){
+   cfg[kind].status.textContent='Error: '+error.message;
+  }
 
-  const n=document.createElement('div');
-  n.className='note warning';
-  n.textContent='No se pudo iniciar el detector de postura. Revisa que tengas internet, abre esta página en Chrome/Edge/Safari actualizado y vuelve a cargarla. Si estás dentro de una vista previa de archivos, usa “Abrir en navegador”.';
-
-  document.querySelector('.steps').after(n);
+  const note=document.createElement('div');
+  note.className='note warning';
+  note.textContent='No se pudo iniciar el detector. Revisa tu conexión a internet y abre esta página en Chrome, Edge o Safari actualizado. Los controles de video seguirán funcionando, aunque no habrá detección automática.';
+  document.querySelector('.steps').after(note);
  }
 }
 
+/* PROCESAMIENTO CONTROLADO DE FOTOGRAMAS */
 async function processFrame(kind){
  const c=cfg[kind];
 
  if(!state.ready[kind]||c.video.readyState<2)return;
- if(state.busy[kind]){state.pending[kind]=true;return}
+
+ if(state.busy[kind]){
+  state.pending[kind]=true;
+  return;
+ }
 
  state.busy[kind]=true;
 
@@ -440,13 +624,12 @@ async function processFrame(kind){
    await state.pose[kind].send({image:c.video});
   }while(state.pending[kind]);
 
- }catch(e){
-  c.state.textContent='No se pudo analizar este fotograma. Intenta pausar y volver a reproducir.';
-  console.error(e);
+ }catch(error){
+  console.error(error);
+  c.status.textContent='No se pudo analizar este fotograma';
 
  }finally{
   state.busy[kind]=false;
-  if(state.pending[kind])processFrame(kind);
  }
 }
 
@@ -470,8 +653,10 @@ function startFrameLoop(kind){
  requestAnimationFrame(tick);
 }
 
+/* CARGA Y CONTROLES DE CADA VIDEO */
 function attach(kind){
  const c=cfg[kind];
+ const video=c.video;
 
  c.file.addEventListener('change',()=>{
   const file=c.file.files[0];
@@ -483,133 +668,149 @@ function attach(kind){
    return;
   }
 
-  if(c.video.dataset.url)URL.revokeObjectURL(c.video.dataset.url);
+  if(video.dataset.url)URL.revokeObjectURL(video.dataset.url);
 
   const url=URL.createObjectURL(file);
-  c.video.src=url;
-  c.video.dataset.url=url;
-  c.video.classList.remove('hidden');
+  video.src=url;
+  video.dataset.url=url;
+  video.classList.remove('hidden');
   c.placeholder.classList.add('hidden');
 
-  c.video.onloadedmetadata=()=>{
-   if(!Number.isFinite(c.video.duration)||c.video.duration<=0){
+  video.onloadedmetadata=()=>{
+   if(!Number.isFinite(video.duration)||video.duration<=0){
     alert('No se pudo leer la duración del video.');
     return;
    }
 
-   c.play.disabled=c.speed.disabled=c.capture.disabled=false;
+   video.pause();
+   video.currentTime=0;
+   video.playbackRate=Number(c.speed.value);
+
+   c.play.disabled=false;
+   c.speed.disabled=false;
+   c.capture.disabled=true;
    $(kind+'Step').disabled=false;
    $(kind+'StepBack').disabled=false;
 
-   c.video.pause();
-   c.video.currentTime=0;
+   c.canvas.width=video.videoWidth;
+   c.canvas.height=video.videoHeight;
+
+   c.status.textContent=file.name+' · '+video.videoWidth+'×'+video.videoHeight;
+
    startFrameLoop(kind);
-
-   c.state.textContent=`${file.name} · ${c.video.videoWidth}×${c.video.videoHeight}`;
-
-   c.canvas.width=c.video.videoWidth;
-   c.canvas.height=c.video.videoHeight;
-
    processFrame(kind);
   };
 
-  c.video.onerror=()=>{
-   c.state.textContent='No se pudo abrir el video. Prueba con MP4 H.264.';
-   alert('No se pudo abrir este video. Prueba exportarlo como MP4 (H.264).');
+  video.onerror=()=>{
+   c.status.textContent='No se pudo abrir el video';
+   alert('No se pudo abrir este archivo. Prueba exportarlo como MP4 H.264.');
   };
  });
 
+ /* BOTÓN PLAY/PAUSA: ALTERNANCIA POR ESTADO REAL DEL VIDEO */
  c.play.addEventListener('click',async()=>{
-  if(c.video.paused){
+  if(video.paused||video.ended){
+   if(video.ended)video.currentTime=0;
+
    try{
-    await c.video.play();
+    await video.play();
     c.play.textContent='Pausar';
-    processFrame(kind);
-   }catch(e){
-    c.state.textContent='No se pudo reproducir el video';
+   }catch(error){
+    c.play.textContent='Reproducir';
+    c.status.textContent='No se pudo reproducir. Intenta nuevamente.';
+    console.error(error);
    }
+
   }else{
-   c.video.pause();
+   video.pause();
    c.play.textContent='Reproducir';
-   processFrame(kind);
   }
  });
 
- c.speed.addEventListener('change',()=>c.video.playbackRate=Number(c.speed.value));
-
- c.video.addEventListener('timeupdate',()=>{
-  c.time.textContent=fmtTime(c.video.currentTime);
- });
-
- c.video.addEventListener('pause',()=>{
-  c.play.textContent='Reproducir';
-  processFrame(kind);
- });
-
- c.video.addEventListener('play',()=>{
+ /* ACTUALIZAR EL TEXTO SI EL VIDEO CAMBIA DE ESTADO */
+ video.addEventListener('play',()=>{
   c.play.textContent='Pausar';
   processFrame(kind);
  });
 
- c.video.addEventListener('seeked',()=>{
-  state.pending[kind]=true;
+ video.addEventListener('playing',()=>{
+  c.play.textContent='Pausar';
+ });
+
+ video.addEventListener('pause',()=>{
+  c.play.textContent='Reproducir';
   processFrame(kind);
  });
 
- c.video.addEventListener('ended',()=>{
+ video.addEventListener('ended',()=>{
   c.play.textContent='Reproducir';
  });
 
+ c.speed.addEventListener('change',()=>{
+  video.playbackRate=Number(c.speed.value);
+ });
+
+ video.addEventListener('timeupdate',()=>{
+  c.time.textContent=fmtTime(video.currentTime);
+ });
+
+ video.addEventListener('seeked',()=>{
+  processFrame(kind);
+ });
+
  $(kind+'Step').addEventListener('click',()=>{
-  c.video.pause();
-  c.video.currentTime=Math.min(c.video.duration,c.video.currentTime+1/30);
+  video.pause();
+  video.currentTime=Math.min(video.duration,video.currentTime+1/30);
  });
 
  $(kind+'StepBack').addEventListener('click',()=>{
-  c.video.pause();
-  c.video.currentTime=Math.max(0,c.video.currentTime-1/30);
+  video.pause();
+  video.currentTime=Math.max(0,video.currentTime-1/30);
  });
 
  c.capture.addEventListener('click',()=>capture(kind));
 }
 
+/* INDICADORES */
 function renderMetrics(kind,m){
  const el=cfg[kind].metrics;
 
  if(!m){
-  el.innerHTML='<div class="empty">No se detectan todos los puntos necesarios. Muestra el cuerpo completo, evita que quede tapado y vuelve a intentar.</div>';
+  el.innerHTML='<div class="empty">No se detectan todos los puntos necesarios. Muestra el cuerpo completo y vuelve a intentar.</div>';
   return;
  }
 
  const card=(title,internal,complement,detail)=>`
-  <div class="metric">
-   <div class="name">${title}</div>
-   <div class="desc">Ángulo interno</div>
-   <div class="value">${internal.toFixed(1)}<span class="unit">°</span></div>
-   <div class="desc">Complementario (180° − interno)</div>
-   <div class="value" style="font-size:20px">${complement.toFixed(1)}<span class="unit">°</span></div>
-   <div class="desc">${detail}</div>
-  </div>`;
+ <div class="metric">
+  <div class="name">${title}</div>
+  <div class="desc">Ángulo interno</div>
+  <div class="value">${internal.toFixed(1)}<span class="unit">°</span></div>
+  <div class="desc">Complementario (180° − interno)</div>
+  <div class="value" style="font-size:20px">${complement.toFixed(1)}<span class="unit">°</span></div>
+  <div class="desc">${detail}</div>
+ </div>`;
 
  const single=(title,value,detail)=>`
-  <div class="metric">
-   <div class="name">${title}</div>
-   <div class="value">${value.toFixed(1)}<span class="unit">°</span></div>
-   <div class="desc">${detail}</div>
-  </div>`;
+ <div class="metric">
+  <div class="name">${title}</div>
+  <div class="value">${value.toFixed(1)}<span class="unit">°</span></div>
+  <div class="desc">${detail}</div>
+ </div>`;
 
- el.innerHTML=kind==='sag'?
-  card('Rodilla · vista lateral',m.kneeInternal,m.kneeComplement,'Puntos estimados: cadera – rodilla – tobillo')+
-  card('Cadera · vista lateral',m.hipInternal,m.hipComplement,'Puntos estimados: hombro – cadera – rodilla')+
-  single('Inclinación del tronco',m.trunk,'Segmento hombro–cadera respecto a la vertical'):
-  card('Pierna izquierda · vista frontal',m.leftInternal,m.leftDeviation,'Puntos estimados: cadera – rodilla – tobillo')+
-  card('Pierna derecha · vista frontal',m.rightInternal,m.rightDeviation,'Puntos estimados: cadera – rodilla – tobillo')+
-  single('Inclinación de pelvis',m.pelvisObliquity,'Línea entre ambas caderas respecto a horizontal')+
-  single('Inclinación lateral del tronco',m.trunkLateral,'Centro de hombros–centro de caderas respecto a vertical');
+ el.innerHTML=kind==='sag'
+ ?card('Rodilla · vista lateral',m.kneeInternal,m.kneeComplement,'Cadera–rodilla–tobillo')
+ +card('Cadera · vista lateral',m.hipInternal,m.hipComplement,'Hombro–cadera–rodilla')
+ +single('Inclinación del tronco',m.trunk,'Respecto a la vertical')
+ :card('Pierna izquierda · vista frontal',m.leftInternal,m.leftDeviation,'Cadera–rodilla–tobillo')
+ +card('Pierna derecha · vista frontal',m.rightInternal,m.rightDeviation,'Cadera–rodilla–tobillo')
+ +single('Inclinación de pelvis',m.pelvisObliquity,'Respecto a la horizontal')
+ +single('Inclinación lateral del tronco',m.trunkLateral,'Respecto a la vertical');
 }
 
+/* REGISTROS */
 function capture(kind){
- const c=cfg[kind],m=state.latest[kind];
+ const c=cfg[kind];
+ const m=state.latest[kind];
 
  if(!m){
   alert('No hay suficientes puntos visibles para registrar este fotograma.');
@@ -617,21 +818,19 @@ function capture(kind){
  }
 
  const entry={
-  id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),
+  id:Date.now()+Math.random(),
   name:$('participant').value.trim()||'Sin identificar',
   trial:$('trial').value.trim(),
   notes:$('notes').value.trim(),
   plane:kind==='sag'?'Sagital':'Frontal',
   seconds:Number(c.video.currentTime.toFixed(3)),
-  playbackRate:c.video.playbackRate,
-  videoDuration:c.video.duration,
   measurements:{...m},
   createdAt:new Date().toISOString()
  };
 
  state.records.push(entry);
  renderRecords();
- c.state.textContent=`Captura guardada · ${fmtTime(entry.seconds)}`;
+ c.status.textContent='Captura guardada · '+fmtTime(entry.seconds);
 }
 
 function renderRecords(){
@@ -642,16 +841,19 @@ function renderRecords(){
   return;
  }
 
- body.innerHTML=state.records.map(r=>`
-  <tr>
+ body.innerHTML=state.records.map(r=>{
+  const m=r.measurements;
+
+  return `<tr>
    <td>${esc(r.name)}</td>
    <td>${r.plane}</td>
    <td>${r.seconds.toFixed(2)}</td>
-   <td>${val(r.measurements.kneeComplement??r.measurements.leftDeviation??r.measurements.rightDeviation)}</td>
-   <td>${val(r.measurements.hipComplement)}</td>
-   <td>${val(r.measurements.trunk??r.measurements.trunkLateral)}</td>
+   <td>${val(m.kneeComplement??m.leftDeviation??m.rightDeviation)}</td>
+   <td>${val(m.hipComplement)}</td>
+   <td>${val(m.trunk??m.trunkLateral)}</td>
    <td>${new Date(r.createdAt).toLocaleString('es-CL')}</td>
-  </tr>`).join('');
+  </tr>`;
+ }).join('');
 }
 
 function val(v){
@@ -659,7 +861,9 @@ function val(v){
 }
 
 function esc(s){
- return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ return String(s).replace(/[&<>"']/g,c=>({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+ }[c]));
 }
 
 function download(name,content,type){
@@ -678,14 +882,33 @@ function exportCSV(){
   return;
  }
 
- const headers=['name','trial','plane','seconds','knee_or_alignment_deg','hip_deg','trunk_deg','left_alignment_deg','right_alignment_deg','pelvis_obliquity_deg','trunk_lateral_deg','created_at'];
+ const headers=[
+  'Participante','Intento','Plano','Tiempo',
+  'Rodilla interno','Rodilla complementario',
+  'Cadera interno','Cadera complementario',
+  'Tronco','Izquierda interno','Izquierda desviacion',
+  'Derecha interno','Derecha desviacion',
+  'Oblicuidad pelvis','Tronco frontal','Fecha'
+ ];
 
  const rows=state.records.map(r=>{
   const m=r.measurements;
-  return[r.name,r.trial,r.plane,r.seconds,m.kneeComplement??'',m.hipComplement??'',m.trunk??'',m.leftDeviation??'',m.rightDeviation??'',m.pelvisObliquity??'',m.trunkLateral??'',r.createdAt];
+
+  return[
+   r.name,r.trial,r.plane,r.seconds,
+   m.kneeInternal??'',m.kneeComplement??'',
+   m.hipInternal??'',m.hipComplement??'',
+   m.trunk??'',
+   m.leftInternal??'',m.leftDeviation??'',
+   m.rightInternal??'',m.rightDeviation??'',
+   m.pelvisObliquity??'',m.trunkLateral??'',
+   r.createdAt
+  ];
  });
 
- const csv=[headers,...rows].map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\n');
+ const csv=[headers,...rows]
+ .map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';'))
+ .join('\n');
 
  download('biomech_lab_registros.csv','\ufeff'+csv,'text/csv;charset=utf-8');
 }
@@ -698,7 +921,7 @@ function exportJSON(){
 
  download('biomech_lab_evaluacion.json',JSON.stringify({
   application:'Biomech Lab',
-  version:'1.2',
+  version:'1.3',
   method:'MediaPipe Pose · estimaciones geométricas 2D',
   records:state.records
  },null,2),'application/json');
@@ -716,27 +939,34 @@ $('clearRecords').addEventListener('click',()=>{
 });
 
 $('importJson').addEventListener('change',async e=>{
- const f=e.target.files[0];
- if(!f)return;
+ const file=e.target.files[0];
+ if(!file)return;
 
  try{
-  const data=JSON.parse(await f.text());
-
-  if(!Array.isArray(data.records))throw Error('Formato');
+  const data=JSON.parse(await file.text());
+  if(!Array.isArray(data.records))throw new Error('Formato inválido');
 
   state.records=data.records;
   renderRecords();
-  $('importStatus').textContent=`${data.records.length} registros cargados`;
+  $('importStatus').textContent=data.records.length+' registros cargados';
 
- }catch(err){
+ }catch(error){
   $('importStatus').textContent='Archivo JSON no válido';
  }
 });
 
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
- document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
- document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));
-}));
+/* PESTAÑAS */
+document.querySelectorAll('.tab').forEach(button=>{
+ button.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(tab=>{
+   tab.classList.toggle('active',tab===button);
+  });
+
+  document.querySelectorAll('.panel').forEach(panel=>{
+   panel.classList.toggle('active',panel.id===button.dataset.tab);
+  });
+ });
+});
 
 attach('sag');
 attach('front');
@@ -748,18 +978,5 @@ window.addEventListener('beforeunload',()=>{
  });
 });
 </script>
-
-<style>
-@media print{
- header,.tabs,.drop,.controls,.footer,.status{display:none!important}
- body{background:white}
- main{max-width:none;padding:0}
- .panel{display:none!important}
- #records{display:block!important}
- .card{box-shadow:none;break-inside:avoid}
- .card-head button{display:none}
-}
-</style>
-
 </body>
 </html>
